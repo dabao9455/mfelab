@@ -1,24 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, deleteItem, changeNumber, cartItemSelector, totalItemsSelector } from "../../redux/cart";
+import {
+  addItem,
+  deleteItem,
+  changeNumber,
+  cartItemSelector,
+  totalItemsSelector,
+} from "../../redux/cart";
 import Counter from "./Counter";
 
-const Cart = ({onItemDeleted}) => {
+const Cart = ({ onItemDeleted }) => {
   const counts = useSelector(cartItemSelector);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const totalItems = useSelector(totalItemsSelector)
+  const totalItems = useSelector(totalItemsSelector);
   const handleCountChange = (item, count) => {
-    dispatch(changeNumber({id:item.id, number:count}))
+    dispatch(changeNumber({ id: item.id, number: count }));
   };
 
+  useEffect(() => {
+    console.log("yes it is");
+  }, []);
+
   const handleAdd = () => {
-    dispatch(addItem())
+    dispatch(addItem());
   };
 
   const handleDelete = (item) => {
-    dispatch(deleteItem(item))
-    onItemDeleted(item)
+    dispatch(deleteItem(item));
+    onItemDeleted(item);
   };
   return (
     <>
