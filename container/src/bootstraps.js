@@ -1,5 +1,6 @@
-import {mount} from "product/productIndex"
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
 
-const {addHandler} =  mount(document.querySelector("#root"),{onItemDeleted:console.log})
-
-document.querySelector("#btnAdd").addEventListener("click",()=>addHandler())
+const root = document.querySelector("#root");
+ReactDOM.render(<App />, root);
