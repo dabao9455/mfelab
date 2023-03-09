@@ -18,10 +18,6 @@ const Cart = ({ onItemDeleted }) => {
     dispatch(changeNumber({ id: item.id, number: count }));
   };
 
-  useEffect(() => {
-    console.log("yes it is");
-  }, []);
-
   const handleAdd = () => {
     dispatch(addItem());
   };

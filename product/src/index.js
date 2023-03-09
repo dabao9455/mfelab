@@ -1,23 +1,21 @@
 
-import ReactDOM from "react-dom"
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import App from "./App";
+import Cart from "./components/Cart";
 import store from "../redux/store";
 import { Provider } from "react-redux";
 import { addItem } from "../redux/cart";
-import { createRoot } from "react-dom/client";
 
-export const mount = (el, { onItemDeleted }) => {
+export const createComponent = () => {
   const addHandler = (item) => store.dispatch(addItem(item));
-  const component = (
+  const Component = (props) => (
     <Provider store={store}>
-      <App onItemDeleted={onItemDeleted} />
+      <Cart {...props} />
     </Provider>
   );
 
-  const root = createRoot(el);
-  root.render(component);
-  return { addHandler };
+  return { addHandler, Component };
 };
+
 
 

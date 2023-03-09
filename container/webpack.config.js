@@ -1,5 +1,7 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin")
+const packageJson = require("./package.json");
+
 module.exports = {
   mode: "development",
   module: {
@@ -29,6 +31,7 @@ module.exports = {
       remotes: {
         product: "product@http://localhost:8081/remoteEntry.js",
       },
+      shared: packageJson.dependencies,
     }),
   ],
 };

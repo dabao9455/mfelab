@@ -1,18 +1,14 @@
-import React, { useEffect, useRef } from "react";
-import { mount } from "product/productIndex";
+import React from "react";
+import { createComponent } from "product/productIndex";
+
+const { addHandler, Component } = createComponent();
 
 export default () => {
-  const ref = useRef();
-  const eventRef = useRef();
-  useEffect(() => {
-    const { addHandler } = mount(ref.current, { onItemDeleted: console.log });
-    eventRef.current = addHandler;
-  }, []);
   return (
     <>
       <div>I am a app</div>
-      <div ref={ref}></div>
-      <button onClick={() => eventRef.current(18)}>Add</button>
+      <Component onItemDeleted={console.log} />
+      <button onClick={() => addHandler(2)}>Add</button>
     </>
   );
 };
