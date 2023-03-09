@@ -8,7 +8,7 @@ export default () => {
     <>
       <div>I am a app</div>
       <Component onItemDeleted={console.log} />
-      <button onClick={() => addHandler(2)}>Add</button>
+      <button onClick={() => addHandler(0)}>Add</button>
     </>
   );
 };
